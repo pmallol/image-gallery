@@ -11,9 +11,18 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   justify-content: center;
   align-items: center;
+}
 
-  & > * {
-    display: flex;
-    justify-content: center;
-  } 
+.grid > * {
+  display: flex;
+  justify-content: center;
+} 
+
+.share {
+  background-color: black;
+  color: #aaaaaa;
+  top: 80vh;
+  position: absolute;
+  padding: .5rem .8rem;
+  border: none;
 }

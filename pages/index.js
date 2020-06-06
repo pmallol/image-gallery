@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import ShareButton from '../components/ShareButton'
 import Lightbox from 'react-image-lightbox'
+
 
 const Landing = () => {
   const [images, setImages] = useState(null)
@@ -91,9 +93,9 @@ const Landing = () => {
         onMovePrevRequest={() => setImageIndex((imageIndex + images.pictures.length - 1) % images.pictures.length)}
         onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.pictures.length)}
         imageCaption={imageDetails ? `${imageDetails.author} | ${imageDetails.camera} | ${imageDetails.tags}`  : ""}
+        toolbarButtons={[<ShareButton url="lalala" />]}
       />
     )}
-
   </div>)
 }
 
