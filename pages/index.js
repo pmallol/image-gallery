@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import { useEffect, useState } from 'react'
 import ShareButton from '../components/ShareButton'
 import Button from '../components/Button'
@@ -13,8 +14,10 @@ const Landing = () => {
   const [openLightbox, setOpenLightbox] = useState(false)
   
   const selectImage = (id) => () => {
+    const href = `/?imageId=${images.pictures[id].id}&page=${page}`
     setOpenLightbox(true)
     setImageIndex(id)
+    Router.push(href, href, { shallow: true });
   }
   const nextPage = () => {
     setPage(page + 1)
@@ -62,8 +65,8 @@ const Landing = () => {
         onCloseRequest={() => setOpenLightbox(false)}
         onMovePrevRequest={() => setImageIndex((imageIndex + images.pictures.length - 1) % images.pictures.length)}
         onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.pictures.length)}
-        imageCaption={imageDetails ? `${imageDetails.author} | ${imageDetails.camera} | ${imageDetails.tags}`  : ""}
-        toolbarButtons={[<ShareButton url="lalala" />]}
+        imageCaption={imageDetails ? `${imageDetails.author} | ${imageDetails.camera} | ${imageDetails.tags}` : ""}
+        toolbarButtons={[<ShareButton url={window.location.href} />]}
       />
     )}
     <div className="pagination">

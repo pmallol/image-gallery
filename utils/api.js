@@ -2,6 +2,9 @@ const authPath = "http://interview.agileengine.com/auth"
 const getImages = "http://interview.agileengine.com/images"
 
 export const fetchToken = () => {
+  if(localStorage.getItem('token')) {
+    return localStorage.getItem('token')
+  } else {
    return(
      fetch(authPath, {
       method: 'POST',
@@ -13,8 +16,11 @@ export const fetchToken = () => {
       )
     })
     .then(response => response.json())
-    .then(body => body.token)
-  )
+    .then(body => {
+      localStorage.setItem('token', body.token)
+      return body.token
+    })
+  )}
 }
 
 export const fetchImages = async(page) => {
