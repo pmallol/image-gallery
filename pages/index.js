@@ -27,8 +27,14 @@ const Landing = () => {
   }
 
   useEffect(() => {
+    setPage(Router.query.page || 1)
+  }, [])
+
+  useEffect(() => {
     setImages(null)
-    fetchImages(page).then(body => setImages(body))
+    fetchImages(page).then(body => {
+      setImages(body)
+    })
   }, [page])
 
   useEffect(() => {
@@ -60,8 +66,8 @@ const Landing = () => {
     {openLightbox && (
       <Lightbox 
         mainSrc={imageDetails ? imageDetails.full_picture : images.pictures[imageIndex].cropped_picture}
-        prevSrc={images.pictures[(imageIndex + images.pictures.length - 1) % images.pictures.length]}
-        nextSrc={images.pictures[(imageIndex + 1) % images.pictures.length]}
+        prevSrc={images.pictures[(imageIndex + images.pictures.length - 1) % images.pictures.length].cropped_picture}
+        nextSrc={images.pictures[(imageIndex + 1) % images.pictures.length].cropped_picture}
         onCloseRequest={() => setOpenLightbox(false)}
         onMovePrevRequest={() => setImageIndex((imageIndex + images.pictures.length - 1) % images.pictures.length)}
         onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.pictures.length)}
