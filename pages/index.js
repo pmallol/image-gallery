@@ -72,7 +72,7 @@ const Landing = () => {
         onMovePrevRequest={() => setImageIndex((imageIndex + images.pictures.length - 1) % images.pictures.length)}
         onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.pictures.length)}
         imageCaption={imageDetails ? `${imageDetails.author} | ${imageDetails.camera} | ${imageDetails.tags}` : ""}
-        toolbarButtons={[<ShareButton url={window.location.href} />]}
+        toolbarButtons={[<ShareButton url={imageDetails ? imageDetails.full_picture : images.pictures[imageIndex].cropped_picture} />]}
       />
     )}
     <div className="pagination">
