@@ -76,7 +76,7 @@ const Landing = () => {
       />
     )}
     <div className="pagination">
-      {page > 1  && (
+      {page > 1 && (
         <Button 
           onClick={() => previousPage()}
           value="Prev"
