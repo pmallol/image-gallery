@@ -26,3 +26,18 @@
   padding: .5rem .8rem;
   border: none;
 }
+
+.pagination {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.pagination button {
+  margin: 0 1rem;
+  padding: .5rem .8rem;
+  border: none;
+  background-color: black;
+  color: #aaaaaa;
+}

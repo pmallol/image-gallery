@@ -1,67 +1,37 @@
 import { useEffect, useState } from 'react'
 import ShareButton from '../components/ShareButton'
+import Button from '../components/Button'
 import Lightbox from 'react-image-lightbox'
 
+import { fetchImages, fetchImage } from '../utils/api'
 
 const Landing = () => {
   const [images, setImages] = useState(null)
   const [imageIndex, setImageIndex] = useState(null)
   const [imageDetails, setImageDetails] = useState(null)
+  const [page, setPage] = useState(1)
   const [openLightbox, setOpenLightbox] = useState(false)
-
-  const authPath = "http://interview.agileengine.com/auth"
-  const getImages = "http://interview.agileengine.com/images"
-  const getImage = "http://interview.agileengine.com/images"
   
   const selectImage = (id) => () => {
     setOpenLightbox(true)
     setImageIndex(id)
   }
+  const nextPage = () => {
+    setPage(page + 1)
+  }
+  const previousPage = () => {
+    setPage(page - 1)
+  }
 
   useEffect(() => {
-    fetch(authPath, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(
-        { apiKey: process.env.AE_API_KEY }
-      )
-    })
-    .then(response => response.json())
-    .then((body) => {
-      fetch(getImages, {
-        headers: {
-          'Authorization': `Bearer ${body.token}`
-        }
-      })
-      .then(res => res.json())
-      .then(body => setImages(body))
-    })
-  }, [])
+    setImages(null)
+    fetchImages(page).then(body => setImages(body))
+  }, [page])
 
   useEffect(() => {
     if (images && imageIndex !== null) {
-      // console.log(images, imageIndex)
-      fetch(authPath, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(
-          { apiKey: process.env.AE_API_KEY }
-        )
-      })
-      .then(response => response.json())
-      .then((body) => {
-        fetch(`${getImage}/${images.pictures[imageIndex].id}`, {
-          headers: {
-            'Authorization': `Bearer ${body.token}`
-          }
-        })
-        .then(res => res.json())
-        .then(body => setImageDetails(body))
-      })
+      fetchImage(images.pictures[imageIndex].id)
+      .then(body => setImageDetails(body))
     }
   }, [images, imageIndex])
 
@@ -96,6 +66,21 @@ const Landing = () => {
         toolbarButtons={[<ShareButton url="lalala" />]}
       />
     )}
+    <div className="pagination">
+      {page > 1  && (
+        <Button 
+          onClick={() => previousPage()}
+          value="Prev"
+        />
+        )
+      }
+      {page < 26 && (
+        <Button 
+          onClick={() => nextPage()}
+          value="Next"
+        />
+      )}
+    </div>
   </div>)
 }
 
