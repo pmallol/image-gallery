@@ -1,5 +1,5 @@
 ## AE Task
-This is image gallery made with next and React.js.
+An image gallery using next and React.js.
 
 ## Project setup
 ```

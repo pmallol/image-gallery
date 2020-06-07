@@ -1,0 +1,5 @@
+{
+  "env": {
+    "AE_API_KEY": "@ae_api_key"
+  }
+}
