@@ -22,13 +22,17 @@
   height: 100%;
 }
 
-.share {
+.btn {
   background-color: black;
   color: #aaaaaa;
+  border: none;
+  cursor: pointer;
+  padding: .5rem .8rem;
+}
+
+.share {
   top: 80vh;
   position: absolute;
-  padding: .5rem .8rem;
-  border: none;
 }
 
 .pagination {
@@ -38,10 +42,6 @@
   margin-bottom: 3rem;
 }
 
-.pagination button {
+.pagination .btn {
   margin: 0 1rem;
-  padding: .5rem .8rem;
-  border: none;
-  background-color: black;
-  color: #aaaaaa;
 }

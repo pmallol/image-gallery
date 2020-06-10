@@ -1,5 +1,5 @@
 const Button = ({onClick, value}) => {
-  return <button onClick={onClick}>{value}</button>
+  return <button className="btn" onClick={onClick}>{value}</button>
 }
 
 export default Button

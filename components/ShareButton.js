@@ -12,7 +12,7 @@ const ShareBtn = (props) => {
       console.error(error);
     })
   }
-  return <button className="share" onClick={() => copy(props.url)}>{copyMsg}</button>
+  return <button className="share btn" onClick={() => copy(props.url)}>{copyMsg}</button>
 }
 
 export default ShareBtn
