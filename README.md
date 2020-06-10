@@ -28,3 +28,12 @@ Open the `.env` file and add your AE_API_KEY like this:
 AE_API_KEY=""
 ```
 
+#### To improve:
+
+- Update the url whenever the user clicks on a pagination button or next/prev image button inside lightbox.
+- Add a nice loading indicator when fetching images.
+- Make the `Share` button inside lightbox share the gallery url instead of image url.
+- Images flicker when loading.
+- Animated transitions.
+- Custom Lightbox.
+- Separate gallery and image preview into their own components.
