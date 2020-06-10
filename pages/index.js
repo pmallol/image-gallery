@@ -51,14 +51,14 @@ const Landing = () => {
   return (
   <div>
     <div className="grid">
-      {images.pictures.map((image, id) => {
+      {images.results.map((image, id) => {
         return (
           <a 
             href="#" 
             key={image.id} 
             onClick={selectImage(id)}
           >
-            <img src={image.cropped_picture} />
+            <img src={image.urls.small} />
           </a>
         )
       })}

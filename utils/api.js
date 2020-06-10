@@ -1,5 +1,9 @@
-const authPath = "http://interview.agileengine.com/auth"
-const getImages = "http://interview.agileengine.com/images"
+// const authPath = "http://interview.agileengine.com/auth"
+// const getImages = "http://interview.agileengine.com/images"
+
+// Replace original path with Unsplash photos
+const getImages = "https://api.unsplash.com/search/photos"
+const params = "query=nature-forest-mountain&orientation=squarish&per_page=15"
 
 export const fetchToken = () => {
   if(localStorage.getItem('token')) {
@@ -24,11 +28,12 @@ export const fetchToken = () => {
 }
 
 export const fetchImages = async(page) => {
-  const token = await fetchToken()
+  // const token = await fetchToken()
   return (
-    fetch(`${getImages}?page=${page}`, {
+    fetch(`${getImages}?page=${page}&${params}`, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        // 'Authorization': `Bearer ${token}`
+        'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
       }
     })
     .then(res => res.json())
@@ -36,11 +41,12 @@ export const fetchImages = async(page) => {
 }
 
 export const fetchImage = async(id) => {
-  const token = await fetchToken()
+  // const token = await fetchToken()
   return (
     fetch(`${getImages}/${id}`, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        // 'Authorization': `Bearer ${token}`
+        'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
       }
     })
     .then(res => res.json())
