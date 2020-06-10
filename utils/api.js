@@ -3,7 +3,7 @@
 
 // Replace original path with Unsplash photos
 const getImages = "https://api.unsplash.com/search/photos"
-const params = "query=nature-forest-mountain&orientation=squarish&per_page=15"
+const params = "query=nature-forest-mountain&orientation=squarish&per_page=9"
 
 export const fetchToken = () => {
   if(localStorage.getItem('token')) {
