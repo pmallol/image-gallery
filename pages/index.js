@@ -14,9 +14,10 @@ const Landing = () => {
   const [openLightbox, setOpenLightbox] = useState(false)
   
   const selectImage = (id) => () => {
-    const href = `/?imageId=${images.pictures[id].id}&page=${page}`
     setOpenLightbox(true)
     setImageIndex(id)
+    
+    const href = `/?imageId=${images.results[id].id}&page=${page}`
     Router.push(href, href, { shallow: true });
   }
   const nextPage = () => {
@@ -39,7 +40,7 @@ const Landing = () => {
 
   useEffect(() => {
     if (images && imageIndex !== null) {
-      fetchImage(images.pictures[imageIndex].id)
+      fetchImage(images.results[imageIndex].id)
       .then(body => setImageDetails(body))
     }
   }, [images, imageIndex])
@@ -64,15 +65,15 @@ const Landing = () => {
       })}
     </div>
     {openLightbox && (
-      <Lightbox 
-        mainSrc={imageDetails ? imageDetails.full_picture : images.pictures[imageIndex].cropped_picture}
-        prevSrc={images.pictures[(imageIndex + images.pictures.length - 1) % images.pictures.length].cropped_picture}
-        nextSrc={images.pictures[(imageIndex + 1) % images.pictures.length].cropped_picture}
+      <Lightbox
+        mainSrc={imageDetails ? imageDetails.urls.full : images.results[imageIndex].urls.small}
+        prevSrc={images.results[(imageIndex + images.results.length - 1) % images.results.length].urls.small}
+        nextSrc={images.results[(imageIndex + 1) % images.results.length].urls.small}
         onCloseRequest={() => setOpenLightbox(false)}
-        onMovePrevRequest={() => setImageIndex((imageIndex + images.pictures.length - 1) % images.pictures.length)}
-        onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.pictures.length)}
-        imageCaption={imageDetails ? `${imageDetails.author} | ${imageDetails.camera} | ${imageDetails.tags}` : ""}
-        toolbarButtons={[<ShareButton url={imageDetails ? imageDetails.full_picture : images.pictures[imageIndex].cropped_picture} />]}
+        onMovePrevRequest={() => setImageIndex((imageIndex + images.results.length - 1) % images.results.length)}
+        onMoveNextRequest={() => setImageIndex((imageIndex + 1) % images.results.length)}
+        imageCaption={imageDetails ? `${imageDetails.user.name} | ${imageDetails.exif.model} | #${imageDetails.tags[1].title}` : ""}
+        toolbarButtons={[<ShareButton url={imageDetails ? imageDetails.full_picture : images.results[imageIndex].urls.small} />]}
       />
     )}
     <div className="pagination">

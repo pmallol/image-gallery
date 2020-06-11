@@ -4,6 +4,7 @@
 // Replace original path with Unsplash photos
 const getImages = "https://api.unsplash.com/search/photos"
 const params = "query=nature-forest-mountain&orientation=squarish&per_page=9"
+const getImage = "https://api.unsplash.com/photos"
 
 export const fetchToken = () => {
   if(localStorage.getItem('token')) {
@@ -43,7 +44,7 @@ export const fetchImages = async(page) => {
 export const fetchImage = async(id) => {
   // const token = await fetchToken()
   return (
-    fetch(`${getImages}/${id}`, {
+    fetch(`${getImage}/${id}`, {
       headers: {
         // 'Authorization': `Bearer ${token}`
         'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
