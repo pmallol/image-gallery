@@ -1,5 +1,6 @@
-## AE Task
+## Image Gallery
 An image gallery using next and React.js.
+Images provided by [Unsplash](https://unsplash.com/)
 
 ## Project setup
 ```
@@ -22,10 +23,11 @@ npm run start
 ```
 
 ### Add your own apiKey
-Open the `.env` file and add your AE_API_KEY like this:
+Make sure to sign up to Unsplash and get your own api key.
+Then, open the `.env` file and add your UNSPLASH_ACCESS_KEY like this:
 
 ```
-AE_API_KEY=""
+UNSPLASH_ACCESS_KEY=""
 ```
 
 #### To improve:
