@@ -1,6 +1,7 @@
 ## Image Gallery
 An image gallery using next and React.js.
-Images provided by [Unsplash](https://unsplash.com/)
+
+Images provided by [Unsplash](https://unsplash.com/).
 
 ## Project setup
 ```
@@ -23,14 +24,13 @@ npm run start
 ```
 
 ### Add your own apiKey
-Make sure to sign up to Unsplash and get your own api key.
-Then, open the `.env` file and add your UNSPLASH_ACCESS_KEY like this:
+Make sure to sign up to Unsplash and get your own api key. Then, open the `.env` file and add your UNSPLASH_ACCESS_KEY like this:
 
 ```
 UNSPLASH_ACCESS_KEY=""
 ```
 
-#### To improve:
+### Future improvements:
 
 - Update the url whenever the user clicks on a pagination button or next/prev image button inside lightbox.
 - Add a nice loading indicator when fetching images.

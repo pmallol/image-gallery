@@ -5,10 +5,11 @@
 }
 
 .grid {
-  margin: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
   display: grid;
-  grid-gap: 1.5rem; 
-  grid-template-columns: repeat(3, 250px);
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, 250px);
   grid-template-rows: repeat(3, 250px);
   justify-content: center;
   align-items: center;

@@ -1,5 +1,6 @@
 {
   "env": {
-    "AE_API_KEY": "@ae_api_key"
+    "AE_API_KEY": "@ae_api_key",
+    "UNSPLASH_ACCESS_KEY": "@unsplash_access_key"
   }
 }
