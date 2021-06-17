@@ -1,6 +1,16 @@
-## Image Gallery
-An image gallery using next and React.js.
+## 🖼 Image Gallery
+An image gallery using Next.js and React.js.
+
 Images provided by [Unsplash](https://unsplash.com/)
+
+## 🗝 Add your own apiKey
+Make sure to sign up to Unsplash and [get your own api key](https://unsplash.com/developers).
+
+Then, open the `.env` file and add your `UNSPLASH_ACCESS_KEY` like this:
+
+```
+UNSPLASH_ACCESS_KEY=""
+```
 
 ## Project setup
 ```
@@ -20,14 +30,6 @@ npm run build
 ### Runs in production
 ```
 npm run start
-```
-
-### Add your own apiKey
-Make sure to sign up to Unsplash and get your own api key.
-Then, open the `.env` file and add your UNSPLASH_ACCESS_KEY like this:
-
-```
-UNSPLASH_ACCESS_KEY=""
 ```
 
 #### To improve:
